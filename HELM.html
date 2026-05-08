@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HELM Elevators Qatar - مصاعد HELM الدوحة</title>
     
-    <!-- خطوط جوجل (Cairo) -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
@@ -40,14 +39,12 @@
             top: 0;
             z-index: 1000;
             border-bottom: 3px solid var(--gold);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
             color: var(--off-white);
-            letter-spacing: 2px;
         }
 
         .nav-links {
@@ -55,62 +52,57 @@
             display: flex;
         }
 
-        .nav-links li {
-            margin-right: 25px; /* تم التعديل ليتناسب مع RTL */
-        }
+        .nav-links li { margin-right: 20px; }
 
         .nav-links a {
             text-decoration: none;
             color: var(--off-white);
             font-weight: 700;
-            transition: 0.3s;
             cursor: pointer;
         }
 
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
+        /* --- تعديل قسم الهيرو لمنع التداخل --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(45deg, rgba(17, 105, 146, 0.9), rgba(253, 251, 242, 0.2));
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 80px;
+            padding: 120px 20px 60px; /* زيادة التباعد العلوي والسفلي */
         }
 
         .hero h1 {
-            font-size: 8rem; 
+            font-size: clamp(4rem, 10vw, 8rem); /* خط مرن يصغر مع الشاشة */
             font-weight: 900;
             color: var(--off-white);
-            text-shadow: 6px 6px 0px var(--gold);
-            margin-bottom: 10px;
-            animation: fadeIn 2s ease-in;
+            text-shadow: 4px 4px 0px var(--gold);
+            margin-bottom: 20px; /* مسافة تحت الكلمة الكبيرة */
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 2rem;
+            font-size: clamp(1.2rem, 4vw, 2rem);
             color: var(--off-white);
             background: var(--turquoise);
-            padding: 5px 30px;
+            padding: 10px 25px;
             border-radius: 50px;
-            margin-bottom: 30px;
+            margin-bottom: 40px; /* مسافة كافية قبل الزر */
+            max-width: 90%;
         }
 
         .btn-qatar {
             background-color: var(--gold);
             color: white;
             padding: 15px 40px;
-            border: none;
             border-radius: 5px;
             font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.4s;
             text-decoration: none;
+            display: inline-block; /* لضمان عمل الهوامش بشكل صحيح */
+            transition: 0.3s;
         }
 
         .btn-qatar:hover {
@@ -121,50 +113,25 @@
         .page-section {
             padding: 120px 10%;
             min-height: 80vh;
-            display: none; 
+            display: none;
         }
 
-        .page-section.active {
-            display: block;
-            animation: slideUp 0.5s ease-out;
-        }
+        .page-section.active { display: block; }
 
-        .section-title {
-            color: var(--turquoise);
-            font-size: 2.5rem;
-            border-bottom: 4px solid var(--gold);
-            display: inline-block;
-            margin-bottom: 40px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* إصلاح استجابة الهواتف */
+        /* --- استجابة الجوال --- */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
                 padding: 10px;
             }
-            .nav-links {
-                margin-top: 10px;
-                gap: 10px;
+            .nav-links { margin-top: 10px; }
+            .nav-links li { margin: 0 8px; }
+            
+            .hero {
+                padding-top: 150px; /* مساحة إضافية لأن الناف بار أصبح أكبر */
             }
-            .nav-links li {
-                margin: 0 5px;
-            }
-            .nav-links a {
-                font-size: 0.9rem;
-            }
-            .hero h1 { font-size: 4rem; }
-            .hero p { font-size: 1.2rem; }
+            .hero h1 { margin-bottom: 15px; }
+            .hero p { margin-bottom: 30px; }
         }
     </style>
 </head>
@@ -181,71 +148,44 @@
     </nav>
 
     <header id="home" class="page-section active">
-        <h1>HELM</h1>
-        <p>الريادة في عالم المصاعد - الدوحة، قطر</p>
-        <a class="btn-qatar" onclick="navigateTo('services')">اكتشف حلولنا</a>
+        <div class="hero">
+            <h1>HELM</h1>
+            <p>الريادة في عالم المصاعد - الدوحة، قطر</p>
+            <a class="btn-qatar" onclick="navigateTo('services')">اكتشف حلولنا</a>
+        </div>
     </header>
 
     <section id="about" class="page-section">
         <h2 class="section-title">من نحن</h2>
-        <p style="font-size: 1.2rem;">تعد شركة <strong>HELM</strong> من الشركات الرائدة في دولة قطر المتخصصة في توريد وتركيب وصيانة المصاعد والسلالم المتحركة بأحدث التقنيات العالمية.</p>
+        <p>تعد شركة <strong>HELM</strong> من الشركات الرائدة في قطر لتوريد وتركيب المصاعد.</p>
     </section>
 
     <section id="services" class="page-section">
-        <h2 class="section-title">خدماتنا في الدوحة</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <div style="background: white; padding: 20px; border-top: 5px solid var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                <h3>مصاعد بانوراما</h3>
-                <p>إطلالة مميزة تضفي لمسة جمالية على المباني التجارية والفلل.</p>
-            </div>
-            <div style="background: white; padding: 20px; border-top: 5px solid var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-                <h3>صيانة دورية</h3>
-                <p>فريق فني متخصص متاح على مدار الساعة لخدمتكم في الدوحة.</p>
-            </div>
-        </div>
+        <h2 class="section-title">خدماتنا</h2>
+        <p>نقدم حلولاً متكاملة للمصاعد والسلالم المتحركة.</p>
     </section>
 
     <section id="contact" class="page-section">
         <h2 class="section-title">تواصل معنا</h2>
-        <p>الموقع: برج الدوحة، الخليج الغربي، قطر</p>
-        <p>هاتف: 974XXXXXXXX+</p>
         <p>البريد: info@helm-qatar.com</p>
     </section>
 
     <script>
         function showPage(pageId) {
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(section => section.classList.remove('active'));
-
-            const activeSection = document.getElementById(pageId);
-            if(activeSection) {
-                activeSection.classList.add('active');
-            }
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            const target = document.getElementById(pageId);
+            if(target) target.classList.add('active');
             window.scrollTo(0, 0);
         }
 
-        // وظيفة التنقل مع دعم زر الرجوع
         function navigateTo(pageId) {
             showPage(pageId);
-            // إضافة الحالة إلى سجل المتصفح
             history.pushState({pageId: pageId}, null, "#" + pageId);
         }
 
-        // الاستماع لزر الرجوع في المتصفح
         window.onpopstate = function(event) {
-            if (event.state && event.state.pageId) {
-                showPage(event.state.pageId);
-            } else {
-                showPage('home');
-            }
+            showPage(event.state ? event.state.pageId : 'home');
         };
-
-        // تعيين الحالة الافتراضية عند التحميل
-        window.onload = function() {
-            const hash = window.location.hash.replace('#', '') || 'home';
-            showPage(hash);
-            history.replaceState({pageId: hash}, null, "#" + hash);
-        }
     </script>
 
 </body>
