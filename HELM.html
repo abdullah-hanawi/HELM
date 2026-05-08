@@ -49,34 +49,48 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 15px; /* المسافة بين الكلمات */
         }
 
+        /* التعديل المطلوب: الكلمات محاطة بخلفية بيضاء بمفردها */
         .nav-links a {
             text-decoration: none;
-            color: var(--off-white);
+            color: var(--turquoise);    /* لون النص غامق ليظهر بوضوح فوق الأبيض */
+            background-color: #ffffff;   /* خلفية بيضاء لكل كلمة */
+            padding: 6px 18px;           /* مسافة داخلية (فوق وتحت ، يمين ويسار) */
+            border-radius: 50px;         /* حواف دائرية تجعلها كالأزرار */
             font-weight: 700;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;   /* انسيابية في تغيير اللون */
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* ظل خفيف جداً */
         }
 
-        /* حل مشكلة تداخل العناصر في قسم الهيرو */
+        /* تأثير عند مرور الماوس */
+        .nav-links a:hover {
+            background-color: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* قسم الهيرو */
         .hero-container {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* يضمن توسيط المحتوى عمودياً */
+            justify-content: center; 
             align-items: center;
             text-align: center;
             background: linear-gradient(rgba(17, 105, 146, 0.8), rgba(17, 105, 146, 0.8)), 
-                        url('https://via.placeholder.com/1920x1080'); /* يمكنك وضع رابط صورتك هنا */
+                        url('https://via.placeholder.com/1920x1080'); 
             background-size: cover;
             background-position: center;
-            padding: 100px 20px; /* مساحة أمان للعناصر */
+            padding: 100px 20px;
         }
 
         .hero-container h1 {
-            font-size: clamp(3.5rem, 15vw, 8rem); /* حجم خط مرن جداً */
+            font-size: clamp(3.5rem, 15vw, 8rem);
             color: var(--off-white);
             text-shadow: 4px 4px 0px var(--gold);
             margin-bottom: 10px;
@@ -94,7 +108,6 @@
             display: inline-block;
         }
 
-        /* الزر وتنسيقه ليكون بعيداً عن النص */
         .btn-wrapper {
             margin-top: 20px;
         }
@@ -129,11 +142,17 @@
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
-                gap: 10px;
-                padding: 10px;
+                gap: 15px;
+                padding: 15px 10px;
             }
             .nav-links {
-                gap: 10px;
+                gap: 8px;
+                flex-wrap: wrap; /* لضمان عدم خروج الكلمات عن الشاشة في الموبايل */
+                justify-content: center;
+            }
+            .nav-links a {
+                padding: 4px 12px;
+                font-size: 0.8rem;
             }
             .hero-container h1 {
                 margin-top: 20px;
@@ -164,20 +183,21 @@
         </div>
     </main>
 
-    <!-- بقية الأقسام -->
-    <section id="about" class="page-section" style="padding: 120px 10%;">
-        <h2 style="color: var(--turquoise); border-bottom: 3px solid var(--gold); display: inline-block;">من نحن</h2>
-        <p style="margin-top: 20px; font-size: 1.2rem;">تعد شركة <strong>HELM</strong> من الشركات الرائدة في قطر لتوريد وتركيب المصاعد.</p>
+    <!-- الأقسام الأخرى -->
+    <section id="about" class="page-section" style="padding: 150px 10% 80px;">
+        <h2 style="color: var(--turquoise); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 5px;">من نحن</h2>
+        <p style="margin-top: 20px; font-size: 1.2rem; line-height: 1.8;">تعد شركة <strong>HELM</strong> من الشركات الرائدة في قطر لتوريد وتركيب وصيانة أحدث أنظمة المصاعد العالمية بمواصفات قطرية متميزة.</p>
     </section>
 
-    <section id="services" class="page-section" style="padding: 120px 10%;">
-        <h2 style="color: var(--turquoise); border-bottom: 3px solid var(--gold); display: inline-block;">خدماتنا</h2>
-        <p style="margin-top: 20px;">نقدم أفضل حلول المصاعد البانورامية والصيانة في الدوحة.</p>
+    <section id="services" class="page-section" style="padding: 150px 10% 80px;">
+        <h2 style="color: var(--turquoise); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 5px;">خدماتنا</h2>
+        <p style="margin-top: 20px; font-size: 1.2rem; line-height: 1.8;">نقدم حلولاً متكاملة تشمل المصاعد البانورامية، المصاعد المنزلية، ومصاعد الشحن، مع خدمة صيانة دورية على مدار الساعة في الدوحة.</p>
     </section>
 
-    <section id="contact" class="page-section" style="padding: 120px 10%;">
-        <h2 style="color: var(--turquoise); border-bottom: 3px solid var(--gold); display: inline-block;">تواصل معنا</h2>
-        <p style="margin-top: 20px;">info@helm-qatar.com</p>
+    <section id="contact" class="page-section" style="padding: 150px 10% 80px;">
+        <h2 style="color: var(--turquoise); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 5px;">تواصل معنا</h2>
+        <p style="margin-top: 20px; font-size: 1.2rem;">البريد الإلكتروني: <span style="color: var(--turquoise);">info@helm-qatar.com</span></p>
+        <p style="margin-top: 10px; font-size: 1.2rem;">الموقع: الدوحة، دولة قطر</p>
     </section>
 
     <script>
