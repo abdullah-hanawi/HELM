@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HELM Elevators Qatar - مصاعد HELM الدوحة</title>
+    
+    <!-- خطوط جوجل (Cairo) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 
+    <style>
+        :root {
+            --turquoise: #116992;
+            --off-white: #fdfbf2;
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--off-white);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: var(--turquoise);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--gold);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--off-white);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 25px; /* تم التعديل ليتناسب مع RTL */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--off-white);
+            font-weight: 700;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(45deg, rgba(17, 105, 146, 0.9), rgba(253, 251, 242, 0.2));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 8rem; 
+            font-weight: 900;
+            color: var(--off-white);
+            text-shadow: 6px 6px 0px var(--gold);
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .hero p {
+            font-size: 2rem;
+            color: var(--off-white);
+            background: var(--turquoise);
+            padding: 5px 30px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+        }
+
+        .btn-qatar {
+            background-color: var(--gold);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.4s;
+            text-decoration: none;
+        }
+
+        .btn-qatar:hover {
+            background-color: #b8972f;
+            transform: translateY(-5px);
+        }
+
+        .page-section {
+            padding: 120px 10%;
+            min-height: 80vh;
+            display: none; 
+        }
+
+        .page-section.active {
+            display: block;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .section-title {
+            color: var(--turquoise);
+            font-size: 2.5rem;
+            border-bottom: 4px solid var(--gold);
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* إصلاح استجابة الهواتف */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .nav-links {
+                margin-top: 10px;
+                gap: 10px;
+            }
+            .nav-links li {
+                margin: 0 5px;
+            }
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            .hero h1 { font-size: 4rem; }
+            .hero p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">HELM QATAR</div>
+        <ul class="nav-links">
+            <li><a onclick="navigateTo('home')">الرئيسية</a></li>
+            <li><a onclick="navigateTo('about')">من نحن</a></li>
+            <li><a onclick="navigateTo('services')">خدماتنا</a></li>
+            <li><a onclick="navigateTo('contact')">اتصل بنا</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="page-section active">
+        <h1>HELM</h1>
+        <p>الريادة في عالم المصاعد - الدوحة، قطر</p>
+        <a class="btn-qatar" onclick="navigateTo('services')">اكتشف حلولنا</a>
+    </header>
+
+    <section id="about" class="page-section">
+        <h2 class="section-title">من نحن</h2>
+        <p style="font-size: 1.2rem;">تعد شركة <strong>HELM</strong> من الشركات الرائدة في دولة قطر المتخصصة في توريد وتركيب وصيانة المصاعد والسلالم المتحركة بأحدث التقنيات العالمية.</p>
+    </section>
+
+    <section id="services" class="page-section">
+        <h2 class="section-title">خدماتنا في الدوحة</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div style="background: white; padding: 20px; border-top: 5px solid var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3>مصاعد بانوراما</h3>
+                <p>إطلالة مميزة تضفي لمسة جمالية على المباني التجارية والفلل.</p>
+            </div>
+            <div style="background: white; padding: 20px; border-top: 5px solid var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <h3>صيانة دورية</h3>
+                <p>فريق فني متخصص متاح على مدار الساعة لخدمتكم في الدوحة.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="page-section">
+        <h2 class="section-title">تواصل معنا</h2>
+        <p>الموقع: برج الدوحة، الخليج الغربي، قطر</p>
+        <p>هاتف: 974XXXXXXXX+</p>
+        <p>البريد: info@helm-qatar.com</p>
+    </section>
+
+    <script>
+        function showPage(pageId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            const activeSection = document.getElementById(pageId);
+            if(activeSection) {
+                activeSection.classList.add('active');
+            }
+            window.scrollTo(0, 0);
+        }
+
+        // وظيفة التنقل مع دعم زر الرجوع
+        function navigateTo(pageId) {
+            showPage(pageId);
+            // إضافة الحالة إلى سجل المتصفح
+            history.pushState({pageId: pageId}, null, "#" + pageId);
+        }
+
+        // الاستماع لزر الرجوع في المتصفح
+        window.onpopstate = function(event) {
+            if (event.state && event.state.pageId) {
+                showPage(event.state.pageId);
+            } else {
+                showPage('home');
+            }
+        };
+
+        // تعيين الحالة الافتراضية عند التحميل
+        window.onload = function() {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            showPage(hash);
+            history.replaceState({pageId: hash}, null, "#" + hash);
+        }
+    </script>
+
+</body>
+</html>
